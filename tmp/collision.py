@@ -14,6 +14,7 @@ clock = pygame.time.Clock()
 colorBlue = (18, 45, 166)
 colorGreen = (30, 166, 18)
 colorRed = (245, 81, 66)
+colorWhite = (255, 255, 255)
 
 font_type = pygame.font.Font(pygame.font.get_default_font(), 32)
 
@@ -73,7 +74,7 @@ while True:
 
     for i in rects:
         pygame.draw.rect(display, i.color, (i.x, i.y, i.w, i.h), 4)
-        display.blit(font_type.render(i.name, True, (0, 0, 0)), (i.x + 5, i.y + 5))
+        display.blit(font_type.render(i.name, True, colorWhite), (i.x + 5, i.y + 5))
 
     pygame.display.update()
 
