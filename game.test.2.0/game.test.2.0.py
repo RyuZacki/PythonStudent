@@ -14,6 +14,9 @@ pygame.mixer.music.set_volume(0.3)
 
 jump_sound = pygame.mixer.Sound('Rrr.wav')
 fall_sound = pygame.mixer.Sound('Bdish.wav')
+loss_sound = pygame.mixer.Sound('loss.wav')
+heart_plus_sound = pygame.mixer.Sound('hp+.wav')
+button_sound = pygame.mixer.Sound('button.wav')
 
 icon = pygame.image.load('icon.png')
 pygame.display.set_icon(icon)
@@ -27,7 +30,11 @@ cloud_img = [pygame.image.load('Cloud0.png'), pygame.image.load('Cloud1.png')]
 dino_img = [pygame.image.load('Dino0.png'), pygame.image.load('Dino1.png'),pygame.image.load('Dino2.png'),
             pygame.image.load('Dino3.png'),pygame.image.load('Dino4.png')]
 
+health_img = pygame.image.load('heart.png')
+health_img = pygame.transform.scale(health_img, (30, 30))
+
 img_counter = 0
+health = 2
 
 class Object:
     def __init__(self, x, y, width, image, speed):
@@ -54,6 +61,36 @@ class Object:
         self.image = image
         display.blit(self.image, (self.x, self.y))
 
+
+class Button:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.inactive_color = (13, 162, 58)
+        self.active_color = (23, 204, 58)
+
+    def draw(self, x, y, message, action=None, font_size=30):
+        mouse = pygame.mouse.get_pos()
+        click = pygame.mouse.get_pressed()
+
+        if x < mouse[0] < x + self.width and y < mouse[1] < y + self.height:
+            pygame.draw.rect(display, self.active_color, (x, y, self.width, self.height))
+
+            if click[0] == 1:
+                pygame.mixer.Sound.play(button_sound)
+                pygame.time.delay(300)
+                if action is not None:
+                    if action == quit:
+                        pygame.quit()
+                        quit()
+                    else:
+                        action()
+        else:
+            pygame.draw.rect(display, self.inactive_color, (x, y, self.width, self.height))
+
+        print_text(message=message, x=x+10, y=y+10, font_size=font_size)
+
+
 usr_width = 60
 usr_height = 100
 usr_x = display_width // 3
@@ -75,7 +112,38 @@ max_above = 0
 #above_cactus = False
 
 
-def run_game():
+def show_menu():
+    menu_bckgr = pygame.image.load('Menu.jpg')
+
+    start_btn = Button(288, 70)
+    quit_btn = Button(120, 70)
+
+    show = True
+    while show:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+        display.blit(menu_bckgr, (0, 0))
+        start_btn.draw(270, 200, 'Start game', start_game, 50)
+        quit_btn.draw(350,300, 'Quit', quit, 50 )
+
+        pygame.display.update()
+        clock.tick(60)
+
+
+def start_game():
+    global scores, make_jump, jump_counter, usr_y, health
+    while game_cycle():
+        scores = 0
+        make_jump = False
+        jump_counter = 30
+        usr_y = display_height - usr_height - 100
+        health = 2
+
+
+def game_cycle():
     global make_jump
 
     pygame.mixer.music.play(-1)
@@ -86,6 +154,9 @@ def run_game():
     land = pygame.image.load('Land.jpg')
 
     stone, cloud = open_random_objects()
+    heart = Object(display_width, 280, 30,health_img, 4)
+
+    button = Button(110, 50)
 
     while game:
         for event in pygame.event.get():
@@ -96,17 +167,13 @@ def run_game():
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
             make_jump = True
-        if keys[pygame.K_ESCAPE]:
-            pause()
-
-        if make_jump:
-            jump()
 
         count_scores(cactus_arr)
 
         display.blit(land, (0, 0))
         print_text('Scores:' +str(scores), 600, 10)
 
+        #button.draw(20, 100,'wow')
 
         draw_array(cactus_arr)
         move_objects(stone, cloud)
@@ -114,10 +181,23 @@ def run_game():
         #pygame.draw.rect(display, (247,240,22), (usr_x, usr_y, usr_width, usr_height))
         draw_dino()
 
+        if keys[pygame.K_ESCAPE]:
+            pause()
+
+        heart.move()
+        hearts_plus(heart)
+
+        if make_jump:
+            jump()
+
+
         if check_collision(cactus_arr):
             pygame.mixer.music.stop()
-            pygame.mixer.Sound.play(fall_sound)
+            #pygame.mixer.Sound.play(fall_sound)
+            #if not check_health():
             game = False
+
+        show_health()
 
         pygame.display.update()
         clock.tick(80)
@@ -182,14 +262,26 @@ def draw_array(array):
     for cactus in array:
         check = cactus.move()
         if not check:
-            radius = find_radius(array)
+            object_return(array, cactus)
+            '''radius = find_radius(array)
 
             choice = random.randrange(0, 3)
             img = cactus_img[choice]
             width = cactus_options[choice * 2]
             height = cactus_options[choice * 2 + 1]
 
-            cactus.return_self(radius, height, width, img)
+            cactus.return_self(radius, height, width, img)'''
+
+
+def object_return(objects, obj):
+    radius = find_radius(objects)
+
+    choice = random.randrange(0, 3)
+    img = cactus_img[choice]
+    width = cactus_options[choice * 2]
+    height = cactus_options[choice * 2 + 1]
+
+    obj.return_self(radius, height, width, img)
 
 
 def open_random_objects():
@@ -262,31 +354,62 @@ def check_collision(barriers):
         if barrier.y == 449: #Little cactus
            if not make_jump:
                if barrier.x <= usr_x + usr_width - 35 <= barrier.x + barrier.width:
-                   return True
+                   if check_health():
+                       object_return(barriers, barrier)
+                       return False
+                   else:
+                       return True
            elif jump_counter >= 0:
                if usr_y + usr_height - 5 >= barrier.y:
                    if barrier.x <= usr_x + usr_width - 35 <= barrier.x + barrier.width:
-                       return True
+                       if check_health():
+                           object_return(barriers, barrier)
+                           return False
+                       else:
+                           return True
            else:
                if usr_y + usr_height - 10 >= barrier.y:
                    if barrier.x <= usr_x <= barrier.x + barrier.width:
-                       return True
+                       if check_health():
+                           object_return(barriers, barrier)
+                           return False
+                       else:
+                           return True
         else:
             if not make_jump:
                 if barrier.x <= usr_x + usr_width - 5 <= barrier.x + barrier.width:
-                    return True
+                    if check_health():
+                        object_return(barriers, barrier)
+                        return False
+                    else:
+                        return True
             elif jump_counter == 10:
                 if usr_y + usr_height - 5 >= barrier.y:
                     if barrier.x <= usr_x + usr_width - 5 <= barrier.x + barrier.width:
-                        return True
+                        if check_health():
+                            object_return(barriers, barrier)
+                        else:
+                            if check_health():
+                                object_return(barriers, barrier)
+                                return False
+                            else:
+                                return True
             elif jump_counter >= -1:
                 if usr_y + usr_height - 5 >= barrier.y:
                     if barrier.x <= usr_x + usr_width - 35 <= barrier.x + barrier.width:
-                        return True
+                        if check_health():
+                            object_return(barriers, barrier)
+                            return False
+                        else:
+                            return True
                 else:
                     if usr_y + usr_height - 10 >= barrier.y:
                         if barrier.x <= usr_x + 5 <= barrier.x + barrier.width:
-                            return True
+                            if check_health():
+                                object_return(barriers, barrier)
+                                return False
+                            else:
+                                return True
 
         '''if usr_y + usr_height >= barrier.y:
             if barrier.x <= usr_x <= barrier.x + barrier.width:
@@ -340,10 +463,44 @@ def game_over():
         clock.tick(15)
 
 
-while run_game():
-    scores = 0
-    make_jump = False
-    jump_counter = 30
-    usr_y = display_height - usr_height - 100
+def show_health():
+    global health
+    show = 0
+    x = 20
+    while show != health:
+        display.blit(health_img, (x, 20))
+        x += 40
+        show += 1
+
+
+def check_health():
+    global health
+    health -= 1
+    if health == 0:
+        pygame.mixer.Sound.play(loss_sound)
+        return False
+    else:
+        pygame.mixer.Sound.play(fall_sound)
+        return True
+
+
+def hearts_plus(heart):
+    global health, usr_x, usr_y, usr_width, usr_height
+
+    if heart.x <= -heart.width:
+        radius = display_width + random.randrange(500, 2000)
+        heart.return_self(radius, heart.y, heart.width, heart.image)
+
+    if usr_x <= heart.x <= usr_x  + usr_width:
+        if usr_y <= heart.y <= usr_y + usr_height:
+            pygame.mixer.Sound.play(heart_plus_sound)
+            if health < 5:
+                health += 1
+
+            radius = display_width + random.randrange(500, 2000)
+            heart.return_self(radius, heart.y, heart.width, heart.image)
+
+show_menu()
+
 pygame.quit()
 quit()
