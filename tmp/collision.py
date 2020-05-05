@@ -15,6 +15,7 @@ colorBlue = (18, 45, 166)
 colorGreen = (30, 166, 18)
 colorRed = (245, 81, 66)
 
+font_type = pygame.font.Font(pygame.font.get_default_font(), 32)
 
 class Rect:
     def __init__(self, x, y, w, h, color, name):
@@ -27,10 +28,10 @@ class Rect:
 
 
 def create_rect(color, name):
-    x = random.randrange(0, display_width - 300)
-    y = random.randrange(0, display_height - 300)
-    w = random.randrange(0, display_width - 300)
-    h = random.randrange(0, display_height - 300)
+    x = random.randrange(0, display_width - 10)
+    y = random.randrange(0, display_height - 10)
+    w = random.randrange(0, display_width - x)
+    h = random.randrange(0, display_height - y)
 
     return Rect(x, y, w, h, color, name)
 
@@ -71,7 +72,8 @@ while True:
             quit()
 
     for i in rects:
-        pygame.draw.rect(display, i.color, (i.x, i.y, i.w, i.h))
+        pygame.draw.rect(display, i.color, (i.x, i.y, i.w, i.h), 4)
+        display.blit(font_type.render(i.name, True, (0, 0, 0)), (i.x + 5, i.y + 5))
 
     pygame.display.update()
 
