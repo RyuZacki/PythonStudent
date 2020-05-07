@@ -1,7 +1,7 @@
 
 import pygame
 from Player1 import Player
-from Platforms1 import Platform
+from Platforms1 import GameObject
 
 SIZE = (640, 480)
 
@@ -37,20 +37,20 @@ level = [
 
 sprite_group = pygame.sprite.Group()
 sprite_group.add(hero)
-platforms = []
+objects = []
 
 x = 0
 y = 0
 for row in level:
     for col in row:
         if col == '-':
-            pl = Platform(x, y, 'Platform.png')
-            sprite_group.add(pl)
-            platforms.append(pl)
+            obj = GameObject(x, y, 'Platform.png')
+            sprite_group.add(obj)
+            objects.append(obj)
         elif col == '=':
-            pl = Platform(x, y, 'Graz.png')
-            sprite_group.add(pl)
-            platforms.append(pl)
+            obj = GameObject(x, y, 'Graz.png')
+            sprite_group.add(obj)
+            objects.append(obj)
         x += 40
     y += 40
     x = 0
@@ -108,7 +108,7 @@ while done:
 
     screen.fill((10, 120, 10))
 
-    hero.update(left, right, up, platforms)
+    hero.update(left, right, up, objects)
     camera.update(hero)
     for e in sprite_group:
         screen.blit(e.image, camera.apply(e))

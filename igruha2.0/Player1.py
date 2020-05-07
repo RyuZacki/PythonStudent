@@ -28,7 +28,7 @@ class Player(Sprite):
         #self.boltAnimStay = pyganim.PygAnimation(ANIMATION_STAY)
         #self.boltAnimStay.play()
 
-    def update(self, left, right, up, platforms):
+    def update(self, left, right, up, objects):
         if left:
             self.xvel = -MOVE_SPEED
         if right:
@@ -48,22 +48,22 @@ class Player(Sprite):
 
         self.onGround = False
         self.rect.x += self.xvel
-        self.collide(self.xvel, 0, platforms)
+        self.collide(self.xvel, 0, objects)
         self.rect.y += self.yvel
-        self.collide(0, self.yvel, platforms)
+        self.collide(0, self.yvel, objects)
 
-    def collide(self, xvel, yvel, platforms):
-        for pl in platforms:
-            if collide_rect(self, pl):
+    def collide(self, xvel, yvel, objects):
+        for obj in objects:
+            if collide_rect(self, obj):
                 if xvel > 0:
-                    self.rect.right = pl.rect.left
+                    self.rect.right = obj.rect.left
                 if xvel < 0:
-                    self.rect.left = pl.rect.right
+                    self.rect.left = obj.rect.right
                 if yvel > 0:
-                    self.rect.bottom = pl.rect.top
+                    self.rect.bottom = obj.rect.top
                     self.onGround = True
                     self.yvel = 0
                 if yvel < 0:
-                    self.rect.top = pl.rect.bottom
+                    self.rect.top = obj.rect.bottom
                     self.yvel = 0
 

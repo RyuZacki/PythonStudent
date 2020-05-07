@@ -2,7 +2,7 @@
 from pygame.sprite import Sprite
 from pygame.image import load
 
-class Platform(Sprite):
+class GameObject(Sprite):
     def __init__(self, x, y, img):
         Sprite.__init__(self)
         self.image = load(img)
