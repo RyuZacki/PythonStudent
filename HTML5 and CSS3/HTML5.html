@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru"> <!-- Тег html, является основным тегом в котором записывается всё -->
+<head> <!-- head является шапкой, а также в нем записываются загаловки -->
+    <title>Атрибуты</title> <!-- title отображает название странички -->
+    <meta charset="utf-8" />
+</head>
+<body> <!-- body это тело странички -->
+    <p align="center"> Example.... </p>
+</body>
+</html> <!-- Каждый тег должен закрываться с помощью / -->
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+<!-- Работа с текстом -->
+<!DOCTYPE html>  <!-- Это обязательная строчка -->
+<html>
+<head>
+    <title>Проверка</title> <!-- Отображаем название странички -->
+    <meta charset="utf-8" /> <!-- Здесь мы указываем кодировку сайта -->
+</head>
+<body>
+    <h1>Заголовок 1</h1>
+    <h6>Заголовок 2</h6>
+    <p>Этот текст <em>будет</em> <u>абзацем</u></p>
+    <p>Этот <strong>текст</strong> будет <strike>абзацем</strike></p>
+
+    <p><abbr title="Hyper Text Mark-up Language">HTML</abbr></p>
+    <address>США, штат Вашингтон</address>
+
+    <p>Этот <strike><strong><u><em>текст пробный</em></u></strong></strike><big> Этот текст большой </big></p>
+
+    <small> Этот текст маленький </small>
+    <big> Этот текст большой </big>
+    <pre> asdas      adasdad
+
+    asdasd</pre>
+
+    <blockquote cite='http://google.com'><p> Wise men speak because they have something to say; fools because they
+        have to say something</p></blockquote>
+
+    <p align="right">Станислав Лец утверждал: <q cite="http://google.com">Чаще всего выход там, где был вход</q>.</p>
+
+    <hr /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <!-- Одиночный тег -->
+</body>
+</html>
+
+
+
+<!-- <h1> - тег который обозначает заголовок, <p> - тег параграф или абзац -->
+<!-- Тег <i> или <em> выделяет текст курсиром -->
+<!-- Тег <b> или <strong> делает текст жирным -->
+<!-- Тег <strike> перечёркивает текст -->
+<!-- Тег <u> подчёркивает текст -->
+<!-- Тег <abbr> аббревиатура -->
+<!-- Тег <address> ... -->
+<!-- Тег <small> делает текст меньше -->
+<!-- Тег <big> делает текст больше -->
+<!-- ТеГ <pre> сохраняет все отступы -->
+<!-- Тег <blockquote> выводит объёмную цитату -->
+<!-- Тег <q> выводит просто цитату -->
+<!-- Тег <hr /> проводит горизонтальную линию -->
+<!-- Тег <br /> создаёт пустую строчку -->
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!-- Создание списков -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Списки</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <ol type="a" start="4" reversed="reversed"> <!-- type - тип номера, start - с какого номера начать,
+                                                 reversed - переворачивает номерацию -->
+        <li>Первый пункт</li>
+        <li>Второй пункт</li>
+        <li>......</li>
+        <li>......</li>
+    </ol>
+
+    <ul type="square">
+        <li>......</li>
+        <li>......</li>
+        <li>......</li>
+    </ul>
+
+    <dir>
+        <li>.......</li>
+        <li>.......</li>
+        <li>.......</li>
+    </dir>
+</body>
+</html>
+
+
+<!-- Тег <ol> создаёт пронумерованный списк, в котором каждый элемент задаётся с помощью тега <li> -->
+<!-- Тег <ul> создаёт списк без номерации -->
+<!-- Тег <dir> создайт списк без номирации, но с большим отступом -->
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!-- Ссылки в HTML -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ссылки в HTML</title>
+</head>
+<body>
+    <a href="http://google.com" target="_blank" title="Перход на Google"
+    >Главная</a>  <!-- Для каждого тега <a>, нужен атрибут href -->
+
+    <a href="mailto:address@mail.ru">Email</a>
+
+    <a href="#example">Переход на заголовок 6</a> <!-- Переход без перезагрузки странички -->
+    <h1>Заголовок 1</h1>
+    <h2>Заголовок 2</h2>
+    <h3>Заголовок 3</h3>
+    <h4>Заголовок 4</h4>
+    <h5>Заголовок 5</h5>
+    <a name="example"></a> <!-- Сюда будет выполнен переход -->
+    <h6>Заголовок 6</h6>
+    <p>Этот текст <em>будет</em> <u>абзацем</u></p>
+    <p>Этот <strong>текст</strong> будет <strike>абзацем</strike></p>
+
+    <p><abbr title="Hyper Text Mark-up Language">HTML</abbr></p>
+    <address>США, штат Вашингтон</address>
+
+    <p>Этот <strike><strong><u><em>текст пробный</em></u></strong></strike><big> Этот текст большой </big></p>
+
+    <small> Этот текст маленький </small>
+    <big> Этот текст большой </big>
+    <pre> asdas      adasdad
+
+    asdasd</pre>
+
+    <blockquote cite='http://google.com'><p> Wise men speak because they have something to say; fools because they
+        have to say something</p></blockquote>
+
+    <p align="right">Станислав Лец утверждал: <q cite="http://google.com">Чаще всего выход там, где был вход</q>.</p>
+
+    <hr /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+</html>
+
+
+<!-- Тег <a> создаёт ссылку -->
+<!-- Атрибут target позволяет открыть ссылку в новой вкладке -->
+<!-- Атрибут title позволяет сделать подсказку -->
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+<!-- Изображение в HTML -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title> Изображение в HTML </title>
+</head>
+<body>
+    <img src="https://o-planete.ru/wp-content/uploads/2013/10/%D0%B3%D0%BE%D1%80%D1%8B-.jpg"
+    width="50%" height="50%" title="Эта картинка содержит красивый вид" alt="Горы" border="10px"
+    />
+</body>
+</html>
+
+
+<!-- Тег <img> помогает создать и изобразить изображение -->
+<!-- В атрибуте src указываем путь к файлу -->
+<!-- Атрибут width указывает ширину, может задаваться в пискилях(px) или процентах(%) -->
+<!-- Атрибут height указывает высоту, может задаваться в пискилях(px) или процентах(%) -->
+<!-- Атрибут <alt> ... -->
+<!-- Атрибут <border> 'обводка' -->
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!-- Поля ввода -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Поля ввода</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form name="test" action="" method="post" >
+        <label for="name">Введите ваше имя: </label><input type="text" value="" placeholder="Поиск..."
+name="name" id="name" title="Подсказка" maxlength="3" />
+<br /><br />
+        <label for="date">День рождения: </label><input type="date" name="date" id="date" />
+        <br /><br />
+
+        <label for="date">URL: </label><input type="url"  /><br /><br />
+
+        <label for="male">Мужской: </label><input type="radio" name="state" id="male" />
+        <label for="female">Женский: </label><input type="radio" name="state" id="female" />
+        <br /><br />
+
+
+    </form>
+</body>
+</html>
+
+
+<!-- Тег <input> создаёт поле ввода -->
+<!-- Тег <value> добавляем текст в поле -->
+<!-- Тег <placeholder> добавляем прозрачный текст в поле -->
+<!-- Тег <maxlength> добавляет ограничения по вводу символов в поле -->
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!-- Опять текст -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Текст</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <textarea placeholder="Example"></textarea>
+    <form action="" method="post">
+        <p><b>Введите ваш отзыв:</b></p>
+        <textarea rows="10" cols="45" name="text"></textarea>
+        <button>Отправить</button>
+    </form>
+</body>
+</html>
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+<!-- SELECT + OPTION -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SELECT + OPTION</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form action="" method="post">
+    <select size="5" multiple="multiple" name="hero[]">
+        <option disabled="disabled">Выберите героя</option>
+        <option value="Чебурашка">Чебурашка</option>
+        <option selected="selected" value="Крокодил Гена">Крокодил Гена</option>
+        <option value="Шапокляк">Шапокляк</option>
+        <option value="Крыса Лариса">Крыса Лариса</option>
+    </select>
+    <input type="submit" value="Отправить">
+    </form>
+</body>
+</html>
+
+
+<!-- С помощью тега <select> можно создать списк в котором каждый элемент будет описываться с помощью тега <option> -->
+<!-- Эти два тега добавляют выбор для пользователя -->
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!-- HTML5 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <header>Шапка</header>
+    <menu>
+        <li>Типо списк</li>
+    </menu>
+    <article>Статья, новость, пост......
+        <p>Спокойная мелодия</p>
+        <audio controls="controls" autoplay="autoplay" loop="loop">
+            <source src="http://goldenland.onfind.net/2/1/3.mp3" />
+        </audio>
+        <video controls="controls">
+            <source src="">
+        </video>
+    </article>
+    <aside>Бокавая понель</aside>
+    <footer>Низ сайта</footer>
+</body>
+</html>
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!-- Теги -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Теги</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    H<sub>2</sub>O<br />
+
+    4<sup>2</sup>
+</body>
+</html>
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+<!-- Ещё теги -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Теги</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <details>
+        <summary>Информация об авторе</summary>
+        <p>Бендер Родригез</p>
+    </details>
+
+    Проверка 123 <mark>выделенно</mark> 123 проверка
+    <ruby>
+        1<rt>han</rt>
+        2<rt>zi</rt>
+    </ruby>
+    <progress max="100" value="25">
+        Загружено на <span id="value">25</span>
+    </progress>
+
+    <form oninput="result.value=(cm.value/2.54).toFixed(2)">
+        <p>Введите длину в сантиметрах:
+            <input type="number" name="cm" autofocus></p>
+        <p>Длина в дюймах: <output name="result">0</output></p>
+    </form>
+</body>
+</html>
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+

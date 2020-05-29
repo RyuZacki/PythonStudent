@@ -1,0 +1,166 @@
+*{
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: url('https://www.meme-arsenal.com/memes/dcec02eb451cbe8e9737f1bfeaf6c4231.jpg')
+    repeat-x #ddeea5 center top;
+}
+
+#header{color: red}
+
+#header_1{color: green}
+
+h3.style{color: yellow}
+
+p.style{background-color: blue}
+
+p i {
+    color: #ca5597;
+}
+
+p#example:first-letter {
+    color: #d900ff;
+}
+
+p#example:first-line {
+    color: #e7943b;
+}
+
+.href {
+    color: #5f1a1a;
+}
+
+p:hover{background-color: red}
+p:active{background-color: green}
+
+.href:hover {
+    color: #1d5e19;
+}
+
+.href:active {
+    color: #2b4de3;
+}
+
+.href:visited {
+    color: #e32c8a;
+}
+
+#textStyles:hover {
+    background-color: #ddeea5;
+}
+
+p {
+    text-indent: 1.1em;
+}
+
+#textStyles {
+    font-size: 1.3em;
+    font-weight: normal;
+    font-family: Comic Sans MS, sans-serif;
+    text-align: left;
+    text-transform: capitalize;
+    word-spacing: 10px;
+    letter-spacing: 10px;
+    line-height: 220%;
+}
+#textStyles span {text-transform: none}
+
+#testBlock {
+    border: 2px dotted silver;
+    border-bottom: 3px dashed red;
+    width: 500px;
+    height: 400px;
+    float: right;
+    position: relative;
+    /*z-index: -10;*/
+    background-color: #f7f7f7;
+    margin: 19px 33px 16px 60px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+header {
+    width: calc(100% - 20px);
+    height: 50px;
+    background-color: #fff;
+    border-bottom: 2px solid silver;
+    padding: 10px;
+    font-size: 1.2em;
+    color: #333;
+    float: left;
+    font-family: Comic Sans MS, sans-serif;
+}
+
+article, aside {
+    background-color: #fafafa;
+    min-height: 400px;
+    border-radius: 5px;
+    border: 1px solid silver;
+    box-sizing: border-box;
+    margin-top: 20px;
+    overflow: auto;
+    float: left;
+    padding: 10px;
+}
+
+article {
+    width: 60%;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+aside ol {
+    list-style-position: inside;
+    list-style-type: lower-alpha;
+}
+
+aside {
+    width: 25%;
+}
+
+footer {
+    width: calc(100% - 20px);
+    height: 50px;
+    float: left;
+    margin-top: 20px;
+    background-color: #fff;
+    border-top: 2px solid silver;
+    padding: 10px;
+    font-size: 1.2em;
+    color: #333;
+    font-family: Comic Sans MS, sans-serif;
+}
+
+.spanBlock {
+    display: block;
+    height: 50px;
+    width: 100px;
+    border: 1px solid #ff0000;
+    overflow: auto;
+}
+
+/* h1, h3, body называются селекторами */
+/* Всё что находится в {} называется 'блок объявления стилей' */
+/* id записывается через # */
+/* class записывается через . */
+/* Что бы название класса стало персональным для тега, нужно перед . указать тег */
+/* *{
+    font-size:20px;
+}
+ */
+/* Для text-decoration существует - none, line-through, underline, blink, overline */
+/* Стили для ссылки - link, hover, active */
+/* background-repeat, background-image, no-repeat, repeat-x, repeat-y */
+/* border обводка блока */
+/* margin отступы снаружи блока */
+/* padding отступы внутри блока */
+/* border-radius округление углов */
+/* position: static; */
+/* list-style-position: inside; */
+/* list-style-image: url(); */
+/* Разобраться со слоями */
+/*  */
+/*  */

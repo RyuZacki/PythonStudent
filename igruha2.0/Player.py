@@ -8,14 +8,12 @@ JUMP_POWER = 10
 
 GRAVITY = 0.4
 
-ANIMATION_DELAY = 0.1
-ANIMATION_STAY = [('hero.png'), ANIMATION_DELAY]
+animCount = 0
 
 class Player(Sprite):
-    def __init__(self, x, y):
+    def __init__(self, x, y, img):
         Sprite.__init__(self)
-        self.image = Surface((22, 32))
-        self.image.fill((150, 150, 150))
+        self.image = img
         self.xvel = 0
         self.yvel = 0
         self.rect = self.image.get_rect()

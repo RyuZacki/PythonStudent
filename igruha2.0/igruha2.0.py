@@ -1,38 +1,55 @@
 
 import pygame
-from Player1 import Player
+from Player import Player
 from Platforms1 import GameObject
 
 SIZE = (640, 480)
 
+pygame.display.set_caption('Cubes Game')
+
+playerStand = pygame.image.load('anim/idle.png')
+
+walkRight = [pygame.image.load('anim/right_1.png'),
+pygame.image.load('anim/right_2.png'), pygame.image.load('anim/right_3.png'),
+pygame.image.load('anim/right_4.png'), pygame.image.load('anim/right_5.png'),
+pygame.image.load('anim/right_6.png')]
+
+walkLeft = [pygame.image.load('anim/left_1.png'),
+pygame.image.load('anim/left_2.png'), pygame.image.load('anim/left_3.png'),
+pygame.image.load('anim/left_4.png'), pygame.image.load('anim/left_5.png'),
+pygame.image.load('anim/left_6.png')]
+
 window = pygame.display.set_mode(SIZE)
 screen = pygame.Surface(SIZE)
 
-hero = Player(55, 430)
+x1 = 55
+y1 = 430
+
+hero = Player(x1, y1, playerStand)
 
 left = False
 right = False
 up = False
 
 level = [
- '------------------------------------------------------------------------------------------------',
- '-                                                                                              -',
- '-                                                                                              -',
- '-                                                                                              -',
- '-                                                                                              -',
- '-                                                                                              -',
- '-                                                                                              -',
- '-                                                                                              -',
- '-                                                                                              -',
- '-                                                                                              -',
- '-                                                                                              -',
- '-                                                                                              -',
- '-                                                                                              -',
- '-                                                                                              -',
- '-                                    ---------                                                 -',
- '-                        ------------=========--                                               -',
- '-------------------------=======================------------------------------------------------',
- '-==============================================================================================-',
+ '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+ '0                                                                                              0',
+ '0                                                                                              0',
+ '0                                                                                        -------',
+ '0                                                                                   -----=======',
+ '0                                                                                  -============',
+ '0                                                                                  =============',
+ '0                                                                                 -=============',
+ '0                                                                              ---==============',
+ '0                                                                             -=================',
+ '0                                                                             ==================',
+ '0                                                                            -==================',
+ '0                                                                         ---===================',
+ '0                                                                   ------======================',
+ '0                                    ---------                  ----============================',
+ '0                        ------------=========--              --================================',
+ '-------------------------=======================--------------==================================',
+ '================================================================================================',
     ]
 
 sprite_group = pygame.sprite.Group()
@@ -44,11 +61,15 @@ y = 0
 for row in level:
     for col in row:
         if col == '-':
-            obj = GameObject(x, y, 'Platform.png')
+            obj = GameObject(x, y, 'objects/Trava.png')
             sprite_group.add(obj)
             objects.append(obj)
         elif col == '=':
-            obj = GameObject(x, y, 'Graz.png')
+            obj = GameObject(x, y, 'objects/Graz.png')
+            sprite_group.add(obj)
+            objects.append(obj)
+        elif col == '0':
+            obj = GameObject(x, y, 'objects/Nebo.png')
             sprite_group.add(obj)
             objects.append(obj)
         x += 40
@@ -78,6 +99,7 @@ def camera_func(camera, target_rect):
 
     return pygame.Rect(l, t, w, h)
 
+#hero = Player(55, 430, playerStand)
 total_level_width = len(level[0]) * 40
 total_level_height = len(level) * 40
 
@@ -98,6 +120,7 @@ while done:
             if e.key == pygame.K_UP:
                 up = True
 
+
         if e.type == pygame.KEYUP:
             if e.key == pygame.K_LEFT:
                 left = False
@@ -106,15 +129,14 @@ while done:
             if e.key == pygame.K_UP:
                 up = False
 
-    screen.fill((10, 120, 10))
+    screen.fill((0, 255, 255))
 
     hero.update(left, right, up, objects)
     camera.update(hero)
     for e in sprite_group:
         screen.blit(e.image, camera.apply(e))
 
-    window.blit(screen, (0, 0))
     pygame.display.flip()
     timer.tick(60)
 
-
+    window.blit(screen, (0, 0))

@@ -92,7 +92,7 @@ print(A)
 for j in 'hello world':
     if j == 'a':
         break
-    pritn(j * 3, end = '')
+    print(j * 3, end = '')
 else:
     print('Какаха')
 
@@ -155,15 +155,24 @@ print = (test(200)) #print = 300
 
 #-----------------------------------------------------------------------------------------------------------------------
 
+'''
+
+    __ООП__
+1. Инкапсуляция
+2. Наследование
+3. Полиморфизм
+
+'''
+
 class Person:  # <-- Создание класса
     name = 'Ivan'
     age = 10
 
-    def __init__(self, name, age):
+    def __init__(self, name, age): # <-- Конструктор
         self.name = name
         self.age = age
 
-    def set(self, name, age):
+    def set(self, name, age): # <-- Метод
         self.name = name
         self.age = age
 
@@ -196,6 +205,104 @@ ivan = Person('Иван', 56)
 #ivan.set('Иван', 56)
 print(ivan.name + " " + str(ivan.age))
 print(ivan.suka())
+
+#1
+class Dog():
+    """Простая модель собаки"""
+
+    def __init__(self, name, age):  # Функция __init__ отвечает за базовый функционал
+        """Инициализируем атрибуты имя и возраст"""
+        self.name = name
+        self.age = age
+        print("Собака создана")
+        
+    def sit(self):
+        """Собака будет садиться по команде"""
+        print(self.name.title() + " сел")  #  title() - Выводит надпись с большой буквы!
+
+    def jump(self):
+        """Собака будет прыгать по команде"""
+        print(self.name.title() + " прыгнул")
+
+my_dog = Dog('Topik', 4)
+my_dog2 = Dog('Nick', 7)
+
+print(my_dog.age)
+print(my_dog.name)
+
+my_dog.jump()
+my_dog2.sit()
+
+#2
+class Car():
+    """Класс по созданию автомобиля"""
+
+    def __init__(self, make, model, year):
+        """Инициализация атрибутов автомобиля"""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def description_name(self):
+        """Возвращаем описание автомобиля"""
+        desc = str(self.year) + ' ' + self.make + ' ' + self.model
+        return desc.title()
+
+    def read_odometer(self):
+        """Выводим пробег авто"""
+        print("Пробег этого авто " + str(self.odometer_reading) + " км")
+
+    def update_odometer(self, km):
+        """Устанавливаем значеиние на одометре"""
+        if km >= self.odometer_reading:
+            self.odometer_reading = km
+        else:
+            print("Не стоит с этим баловаться")
+
+    def increment_odometer(self, km):
+        """Увеличиваем показания одометра на заданную велечину"""
+        self.odometer_reading += km
+
+
+class Battery():
+    """Простая модель аккумулятора для электромобиля"""
+
+    def __init__(self, battery=100):
+        self.battery = battery
+
+    def description_battery(self):
+        """Выводит информацию о мощности батареи"""
+        print("Этот автомобиль имеет батарею мощностью " + str(self.battery) + "киловат")
+
+
+class ElectricCar(Car):
+    """Аспекты для электромобтля"""
+    def __init__(self, make, model, year):
+        """Инициализация атрибутов класса родителя"""
+        super().__init__(make, model, year)
+        self.battery = Battery()
+
+    def description_name(self):
+        """Переопределение родительского метода"""
+        desc = str(self.year) + ' ' + self.model
+        return desc.title()
+
+
+tesla = ElectricCar('tesla', 's', 2017)
+tesla.battery.description_battery()
+
+# tesla = ElectricCar('tesla', 's', 2017)
+# print = (tesla.description_name())
+# tesla.description_battery()
+
+# my_car = Car('audi', 'a4', 2017)
+# #my_car.odometer_reading = 30
+# my_car.update_odometer(24)
+# my_car.increment_odometer(150)
+#
+# #print(my_car.description_name())
+# my_car.read_odometer()
 
 #-----------------------------------------------------------------------------------------------------------------------
 '''Для игры!'''
