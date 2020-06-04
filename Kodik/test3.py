@@ -1,7 +1,7 @@
 from typing import Any
-import module
+#import module
 
-print(module.add(50, 31))
+#print(module.add(50, 31))
 
 list = [3, 5, 6, 7, 1, 23, 2455, 654, 574, 74, 2, 1, 2]
 fof  = {
@@ -14,8 +14,8 @@ hai = (3, 4, 3, 32, 68, 43, 8, 0, 65 ,90 ,5, 7)
 
 sqs = {1:3, 2:6, 3:45, 4:63, 5:3, 6:90, 7:28, 8:19, 9:9, 10:0}
 
-print( list[::-1])
-print( list[3:7])
+print( list[::-1]) # <-- Перевернул списк
+print( list[3:7]) # <-- с 3 элемента до 7
 
 x = int(input('Введите число: '))
 if x in sqs:

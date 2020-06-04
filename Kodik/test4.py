@@ -34,3 +34,28 @@ while True:
             continue
         if D == 'N':
             break
+
+
+#
+# class H1():
+#     def __init__(self, height, weight, name, age):
+#         self.height = height
+#         self.weight = weight
+#         self.name = name
+#         self.age = age
+#         print('1')
+#
+#     def n(self):
+#         print(self.name)
+#
+# H = input('Введите ... ')
+# W = input('Введите ... ')
+# N = input('Введите ... ')
+# A = input('Введите ... ')
+#
+# players = []
+#
+# player = H1(H, W, N, A)
+# print(player.age)
+# player.n()
+# print(players)
