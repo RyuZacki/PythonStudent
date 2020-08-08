@@ -1,3 +1,5 @@
+from datetime import datetime
+
 sqs = 0,1,4,9,16,25,36,49,64,81
 print(sqs[7:5:-1])
 
@@ -333,80 +335,259 @@ for i in range(len(a)):
 
 #-----------------------------------------------------------------------------------------------------------------------
 
-data = [
-    ['Ухмыляюсь', 2.26, 1.02, 87.3],
-    ['Сияю от радости', 19.1, 1.69, 150.0],
-    ['Катаюсь от смеха', 25.6, 0.774, 0.0],
-    ['Слёзы радости', 233.0, 7.31, 2270.0],
-    ['Подмигиваю', 15.2, 2.36, 264.0],
-    ['Счастлив', 22.7, 4.26, 565.0],
-    ['Глаза-сердца', 64.6, 11.2, 834.0],
-    ['Целую', 87.5, 5.13, 432.0],
-    ['Задумчивость', 6.81, 0.636, 0.0],
-    ['Равнодушие', 6.0, 0.236, 478.0],
-    ['Солнечные очки', 4.72, 3.93, 198.0],
-    ['Громко плачу', 24.7, 1.35, 654.0],
-    ['След от поцелуя', 21.7, 2.87, 98.7],
-    ['Два сердца', 10.0, 5.69, 445.0],
-    ['Сердце', 118.0, 26.0, 1080.0],
-    ['Червы', 3.31, 1.82, 697.0],
-    ['Класс', 23.1, 3.75, 227.0],
-    ['Пожимаю плечами', 1.74, 0.11, 0.0],
-    ['Огонь', 4.5, 2.49, 150.0],
-    ['Переработка', 0.0333, 0.056, 932.0]
-]
+#ДЕКОРАТОР1.0
+def decor(func):
+    def wrap():
+        print('============')
+        func()
+        print('============')
+    return wrap
 
-data.sort(key=lambda row: row[3], reverse=True)
+@decor
+def print_text():
+    print('Hello world!')
 
-print('Название эмодзи  | EmojiXpress, млн |', end='')
-print(' Instagram, млн | Твиттер, млн')
-print('-------------------------------------', end='')
-print('------------------------------')
-for row in data:
-    print('{: <16} | {: >16.2f} | {: >14.2f} | {: >12.2f}'.format(
-        row[0], row[1], row[2], row[3]))
-
-#-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-
-data.sort(key=lambda row: row[1], reverse=True)
-
-print('Название эмодзи  | Emojixpress, млн')
-print('-----------------------------------')
-for row in data[:5]:
-    print('{: <16} | {: >16.2f}'.format(row[0], row[1]))
-print()
-print()
-
-data.sort(key=lambda row: row[2], reverse=True)
-
-print('Название эмодзи  | Instagram, млн')
-print('---------------------------------')
-for row in data[:5]:
-    print('{: <16} | {: >14.2f}'.format(row[0], row[2]))
-print()
-print()
-
-data.sort(key=lambda row: row[3], reverse=True)
-
-print('Название эмодзи  | Твиттер, млн')
-print('-------------------------------')
-for row in data[:5]:
-    print('{: <16} | {: >12.2f}'.format(row[0], row[3]))
-print()
-print()
-
-#-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-
-for i in range(len(data)):
-    part = data[i][1] + data[i][2] + data[i][3]
-    data[i].append(part)
-
-data.sort(key=lambda row: row[4], reverse=True)
-print('Название эмодзи  | Суммарное использование, млн')
-print('-----------------------------------------------')
-for row in data[:5]:
-    print('{: <16} | {: >28.2f}'.format(row[0], row[4]))
+print_text()
 
 # ----------------------------------------------------------------------------------------------------------------------
 
+#РЕКУРСИЯ
+def factarial(x):
+    if x == 1:
+        return 1
+    else:
+        return x * factarial(x - 1)
 
+print(factarial(5))
+
+#============
+
+def is_even(x):
+    if x == 0:
+        return True
+    else:
+        return is_odd(x - 1)
+
+def is_odd(x):
+    return not is_even(x)
+
+print(is_odd(17))
+print(is_even(23))
+
+#============
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+#МНОЖЕСТВА
+num_set = {1, 2, 3, 4, 5}
+word_set = set(['spam', 'eggs', 'sausage'])
+
+print(3 in num_set)
+print('spawn' not in word_set)
+
+#============
+
+nums = {1, 2, 3, 4, 5, 6}
+print(nums)
+nums.add(-7)
+nums.remove(3)
+print(nums)
+
+#============
+
+first = {1, 2, 3, 4, 5, 6}
+second = {4, 5, 6, 7, 8, 9}
+ #Операторы
+print(first | second) # <-- Оператор объединения (|) объединяет два множества в одно, содержащее все элементы двух множеств
+print(first & second) # <-- Оператор пересечения (&) возвращает только элементы, находящиеся в обоих множествах
+print(first - second) # <-- Оператор разности (-) возвращает элементы только с первого множества
+print(second - first)
+print(first ^ second) # <-- Оператор симмерической разности (^) возвращает все элементы с обоих множест, кроме принадлежащих
+                      # одновременно обоим
+
+#============
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+a = input('Введите число: ')
+
+b = type(a)
+if b == str:
+    print('Зелебоба')
+else:
+    print('Кукусик')
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+#Списки
+my_list = []
+my_list1 = list()
+#----------------
+combo_list = [1]
+one_list = [4, 5]
+a = combo_list.extend(one_list)
+
+print(a)  # [1, 4, 5]
+#----------------
+alpha_list = [34, 23, 67, 100, 88, 2]
+alpha_list.sort()
+
+print(alpha_list)  # [2, 23, 34, 67, 88, 100]
+
+
+#Кортежи
+my_tuple = (1, 2, 3, 4, 5)
+a = my_tuple[0:3]
+print(a)  # (1, 2, 3)
+
+another_tuple = tuple()
+abc = tuple([1, 2, 3])
+
+
+#Словари
+my_dict = {}
+another_dict = dict()
+
+my_other_dict = {"one": 1, "two": 2, "three": 3}
+print(my_other_dict)  # {'three': 3, 'two': 2, 'one': 1}
+#----------------
+my_other_dict = {"one": 1, "two": 2, "three": 3}
+
+print(my_other_dict["one"])  # 1
+
+my_dict1 = {"name": "Mike", "address": "123 Happy Way"}
+print(my_dict1["name"])  # 'Mike'
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# Что означает *args и **kwargs
+
+# def do_smth(*args, **kwargs):
+#     pass
+
+def gen(): # <-- Генератор
+    for i in range(10):
+        yield i
+
+def add(*args, **kwargs): # Одна * это упаковка в кортеж, две * это упаковка в словарь
+    print(args)
+    #print(sum(args))
+    print(kwargs)
+
+l = [1,2,3]
+l1 = {'street': 'leninia', 'house': 12}
+add(*l, **l1) # <-- Можно записать вот так
+add(1,2,3, street = 'leninia', house = 12 ) # А можно так
+#add(*gen())
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# if __name__ == '__main__':
+
+a ='123'
+
+def add1():
+    pass
+
+print(globals()) # <-- Какойто скрипт который возвращает словарь
+
+print("Imported from: ", __name__) # Тоже шото то за скрипт
+# __name__ то служебная встроенная переменная, которая хранит имя модуля
+
+def main():
+    pass
+
+if __name__ == '__main__': # <-- Если модуль был запущен как самостоятельный то выполняется следующее
+    main()
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# Генераторы списков
+
+jack = {
+    'name': 'jack',
+    'car': 'bmw'
+}
+
+john = {
+    'name': 'john',
+    'car': 'audi'
+}
+
+users = [jack, john] # <-- Списк словарей
+
+# cars = [person['car'] for person in users] # <-- Генератор списков
+# print(cars)
+
+cars = []
+for person in users:
+    cars.append(person['car'])
+
+# print(cars)
+
+new_cars = [person.get('car', '') for person in users]
+print(new_cars)
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# Фильтрация
+
+names = ['jack', 'john', 'oleg', 'ula']
+
+new_names = [n for n in names if n.startswith('j')]
+
+print(new_names)
+
+new_names = []
+for n in names:
+    if n.startswith('j'):
+        new_names.append(n)
+
+print(new_names)
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+#Декораторы2.0
+
+
+def timeit(arg): # <-- Тут я получаю функцию, как объект
+    print(arg)
+    def outer(func):
+        def wrapper(*args, **kwargs):
+            start = datetime.now()
+            result = func(*args, **kwargs) # <-- Тут я вызвал функцию, которую получиь на входе
+            print(datetime.now() - start)
+            return result
+        return wrapper
+    return outer
+
+
+@timeit('name')
+def one(n):
+    l = []
+    for i in range(n):
+        if i % 2 == 0:
+            l.append(i)
+    return l
+
+@timeit('name')
+def two(n):
+    l = [x for x in range(n) if x % 2 == 0]
+    return l
+
+l1 = timeit('name')(one)(10)
+
+# l1 = timeit(one)(10) # => wrapper(10) => one(10)
+# print(type(l1), l1.__name__)
+
+# l1 = one
+# a = l1(10)
+# print(a)
+
+# l1 = one(10000)
+# l2 = two(10000)
+#
+# #print(l1)
+# #print(l2)
+
+# ----------------------------------------------------------------------------------------------------------------------
