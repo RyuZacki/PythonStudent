@@ -591,3 +591,126 @@ l1 = timeit('name')(one)(10)
 # #print(l2)
 
 # ----------------------------------------------------------------------------------------------------------------------
+
+def test(x, y, z):
+    print(x, y, z)
+
+l = [1,2,3]
+d = {'x': 1, 'y': 2, 'z': 3}
+
+test(*l)
+test(**d)
+
+# ------------
+
+d = {'sum': lambda x,y: x + y,
+     'sub': lambda x,y: x - y}
+
+print(d['sum'](1, 2))
+print(d['sub'](1, 2))
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+#Исключения
+def calc(m):
+    # 1000 : 10 = m : x
+    try:
+        m = int(m)
+    # except Exception:
+    # except Exception as e:
+    except ValueError as e:
+        print(e)
+        # print('Что то пошло не так ')
+        m = 0
+    except TypeError:
+        pass
+    except FileNotFoundError:
+        pass
+    else: # <-- блок else выполняется если в блоке try не произошло исключения
+        return 10 * m / 1000
+    finally: # <-- Этот блок отвечает за тот кусок кода который выполняется в любом случае
+        print('Hi')
+
+
+print(calc('1gfg'))
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+#Генератор
+def gen_countdown(n):
+    while n != 0:
+        yield n - 1
+        n -= 1
+
+g = gen_countdown(4)
+# print(next(g))
+# print(next(g))
+# print(next(g))
+# print(next(g))
+
+for i in gen_countdown(4):
+    print(i)
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# Функция map()
+def upper(string):
+    return string.upper()
+
+
+l = ['one', 'two', 'three']
+
+new_list = list(map(upper, l))
+print(new_list)
+
+new_l = list(map(lambda string: string.upper(), l))
+print(new_l)
+
+nl = [string.upper() for string in l]
+print(nl)
+
+
+def map1(func, iterable): # <-- Эта фунуция эквевалентна функции map()
+    for i in iterable:
+        yield func(i)
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# Функция filter()
+
+def has_o(string):
+    return 'o' in string.lower()
+
+
+l = ['One', 'two', 'three', '23Fkjsf']
+
+nl = list(filter(has_o, l))
+print(nl)
+
+newl = list(filter(lambda string: 'o' in string.lower(), l))
+print(newl)
+
+nl2 = [string for string in l if has_o(string)]
+print(nl2)
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# Else у циклов For и While
+
+for i in range(5):
+    if i == 6:
+        print(i)
+        break
+else:
+    print('The end')
+
+flag = False
+for i in range(5):
+    if i == 4:
+        flag = True
+        break
+
+if flag:
+    print('Six was found')
+
+# ----------------------------------------------------------------------------------------------------------------------
