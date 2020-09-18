@@ -758,3 +758,88 @@ print(any([condition_1,condition_2,condition_3]))
 
 # ----------------------------------------------------------------------------------------------------------------------
 
+# Замыкания
+def main_func(value): # <-- Главная функция
+    name = value
+    def inner_func(): # <-- Вложенная функция
+        print("Hello my friend", name)
+
+    return inner_func
+
+
+a = main_func('Misha')
+a()
+
+
+def adder(value):
+    def inner(a):
+        return value + a
+
+    return inner
+
+a2 = adder(2) # <-- value = 2
+print(a2(5)) # <-- a = 5, после чего мы value + a и получаем 7
+
+
+def counter():
+    count = 0
+    def inner():
+        nonlocal count
+        count += 1
+        return count
+
+    return inner
+
+
+q = counter()
+print(q()) # <-- выведит 1
+print(q()) # <-- выведит 2
+print(q()) # <-- выведит 3
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# Декораторы 3.0
+def decorator(func):
+    def inner(*args, **kwargs):
+        print("start decorator...")
+        func(*args, **kwargs)
+        print("finish decorator...")
+    return inner
+
+
+def say(name, surname, age):
+    print("Hello, ", name, surname, age)
+
+
+say = decorator(say)
+say("Vasya", "Ivanov", 30)
+
+print(" ")
+
+
+def header(func):
+    def inner(*args, **kwargs):
+        print("<h1>")
+        func(*args, **kwargs)
+        print("</h1>")
+    return inner
+
+
+def table(func):
+    def inner(*args, **kwargs):
+        print("<table>")
+        func(*args, **kwargs)
+        print("</table>")
+    return inner
+
+
+def say(name, surname, age):
+    print("Hello, ", name, surname, age)
+
+
+say = table(header(say))
+say("Vasya", "Ivanov", 30)
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+
