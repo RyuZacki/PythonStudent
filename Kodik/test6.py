@@ -842,4 +842,32 @@ say("Vasya", "Ivanov", 30)
 
 # ----------------------------------------------------------------------------------------------------------------------
 
+#Параметры print
+print("Hello world!")
+print("Hello world!")
+print("I\'m fine!")
+
+a = 10
+b = 10.23
+c = "Hello"
+
+print(a)
+print(b)
+print(c)
+
+print("Value of a = ", a)
+print("Value of b = ", b)
+print("Value of c = ", c)
+
+
+print("Hello friends how are you?", end = ' ')
+print("I am fine!", end ='#')
+print() # prints new line
+
+print("ABC", end='')
+print("PQR", end='\n') # ends with a new line
+
+print("This is line 1.", end='[END]\n')
+print("This is line 2.", end='[END]\n')
+print("This is line 3.", end='[END]\n')
 
