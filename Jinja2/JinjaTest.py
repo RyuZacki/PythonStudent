@@ -1,8 +1,3 @@
-from jinja2 import Template
+from jinja2 import Template, escape
 
-name = "Федор"
 
-tm = Template("Привет {{ name }}")
-msg = tm.render(name=name)
-
-print(msg)
