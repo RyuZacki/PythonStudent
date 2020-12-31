@@ -17,29 +17,25 @@ Dire = []
 Radiant = []
 
 
-def appendDire(a):
-    Dire.append(a)
+def checkForHeroes(type, heroes):
+    while True:
+        HeroFind = False
+        Heroes = input("Введите героя для {type}: ".format(type=type))
+        for i in DotaHeroes:
+            if i == Heroes:
+                heroes.append(i)
+                HeroFind = True
+                break
 
+        if HeroFind:
+            print("{0} был добавлен!".format(Heroes))
+        else:
+            print("{0} не был найден!".format(Heroes))
 
-def appendRadiant(a1):
-    Radiant.append(a1)
-
-mainCycle = True
-while mainCycle:
-    HeroFind = False
-    Heroes = input("Введите героя для Dire: ")
-    for i in DotaHeroes:
-        if i == Heroes:
-            appendDire(i)
-            HeroFind = True
+        if len(heroes) == 5:
+            print("Все герои {type} добавлены!".format(type=type))
             break
 
-    if HeroFind:
-        print("{0} был добавлен!".format(Heroes))
-    else:
-        print("{0} не был найден!".format(Heroes))
-
-    if len(Dire) == 5:
-        print("Все герои добавлены!")
-        mainCycle = False
+checkForHeroes("Dire", Dire)
+checkForHeroes("Radiant", Radiant)
 
