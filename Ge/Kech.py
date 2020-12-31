@@ -99,6 +99,9 @@ speak_engine.setProperty('voice', voices[4].id)
 # forced cmd test
 speak("Мой разработчик не научил меня анекдотам ... Ха ха ха")
 
+
+
+
 # speak("Добрый день, повелитель")
 # speak("Кеша слушает")
 

@@ -182,6 +182,3 @@ L.add(2)
 L.add(3)
 
 print(L)
-
-
-

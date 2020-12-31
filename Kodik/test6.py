@@ -871,3 +871,51 @@ print("This is line 1.", end='[END]\n')
 print("This is line 2.", end='[END]\n')
 print("This is line 3.", end='[END]\n')
 
+# ----------------------------------------------------------------------------------------------------------------------
+
+#Определитель
+cycle = True
+
+
+def DeterminantOfOrder2():
+    a, b = int(input("Введите элеммен a11: ")), int(input("Введите элеммен a12: "))
+    a1, b1 = int(input("Введите элеммен a21: ")), int(input("Введите элеммен a22: "))
+
+    print("Определитель 2 порядка")
+    print("   |{a} {b}| \n   |{a1} {b1}|".format(a=a, b=b,a1=a1,b1=b1))
+
+
+def DeterminantOfOrder3():
+    a, b, c = int(input("Введите элеммен a11: ")), int(input("Введите элеммен a12: ")), int(input("Введите элеммен a13: "))
+    a1, b1, c1 = int(input("Введите элеммен a21: ")), int(input("Введите элеммен a22: ")), int(input("Введите элеммен a23: "))
+    a2, b2, c2 = int(input("Введите элеммен a31: ")), int(input("Введите элеммен a32: ")), int(input("Введите элеммен a33: "))
+
+    print("Определитель 3 порядка")
+    print("   |{a} {b} {c}| \n   |{a1} {b1} {c1}| \n   |{a2} {b2} {c2}|".format(a=a,b=b,c=c,a1=a1,b1=b1,c1=c1,a2=a2,b2=b2,c2=c2))
+
+
+def DeterminingTheOrder(Value):
+    if Value == 2:
+        DeterminantOfOrder2()
+    elif Value == 3:
+        DeterminantOfOrder3()
+    else:
+        print("Вы ввели не то значение!")
+
+
+while cycle:
+    check = int(input("Введите порядк предела: "))
+    DeterminingTheOrder(check)
+
+    check2 = input("Если вы хотите ввести определитель, напишите \"Да\", а если не хотите, то \"Нет\": ")
+
+    cycle2 = True
+    while cycle2:
+        if check2 == 'Да':
+            cycle2 = False
+            cycle = True
+        elif check2 == 'Нет':
+            cycle2 = False
+            cycle = False
+        else:
+            print("Вы ввели не то значение!")
