@@ -9,6 +9,7 @@ Radiant = "Radiant"
 teamDire = {"Саппорт 5": None, "Саппорт 4": None, "Офлейнер": None, "Кери": None, "Мид": None,}
 teamRadiant = {"Саппорт 5": None, "Саппорт 4": None, "Офлейнер": None, "Кери": None, "Мид": None,}
 
+WinPercentage = 100
 
 def lineDistributor(type, team):
     print("Распределите роли для команды {0}".format(type))
