@@ -1,7 +1,7 @@
 
 a = ["Жопа", "Пися", "Гавно"]
 
-print(len(a))
+print("Жопа" in a)
 
 b = "Жопа"
 for i in a:
