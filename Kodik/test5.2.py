@@ -1,11 +1,9 @@
 
-a = ["Жопа", "Пися", "Гавно"]
+Slovari = {"Вес": None, "Рост": None, "Возраст": None}
 
-print("Жопа" in a)
+Ves = input("Введите вес: ")
+print(Slovari)
+Slovari["Вес"] = 89
+print(Slovari[0])
+print(Slovari["Вес"])
 
-b = "Жопа"
-for i in a:
-    if i == b:
-        a.append("Привет")
-
-print(len(a))
