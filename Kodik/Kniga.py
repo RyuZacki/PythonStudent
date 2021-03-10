@@ -1,3 +1,4 @@
+#Глава 1
 #-------------------------
 # 1.Бинарный поиск
 #-------------------------
@@ -22,6 +23,7 @@ my_list = [1, 3, 5, 7, 9]
 print(binary_search(my_list, 3))
 print(binary_search(my_list, -1))
 
+#Глава 2
 #-------------------------
 # 2.Сортировка выбором
 #-------------------------
@@ -44,6 +46,7 @@ def selectionSort(arr):
 
 print(selectionSort([5, 3, 6, 2, 10]))
 
+#Глава 3
 #-------------------------
 # 3.Рекурсия
 #-------------------------
@@ -117,6 +120,7 @@ def max(list):
     sub_max = max(list[1:])
     return list[0] if list[0] > sub-max else sub_max # <-- Рекурсивный случай
 
+#Глава 4
 #.Быстрая сортировка
 def quicksort(array):
     if len(array) < 2:
@@ -128,3 +132,42 @@ def quicksort(array):
         return quicksort(less) + [pivot] + quicksort(greater)
 
 print(quicksort([10, 5, 2, 3]))
+
+#Глава 5
+#Хеш-таблицы(Словари)
+book = dict() # <-- Создание пустой хеш-таблицы(словаря)
+book["apple"] = 0.67
+book["milk"] = 1.49
+book["avocado"] = 1.49
+print(book)
+print(book["avocado"])
+
+voted = {}
+value = voted.get("tom") # <-- Функция get проверяет наличие имени том в хещ-таблице
+#Если ключ tom есть в хеш-таблице, то функция get вернёт значение, а если ключа нету, то вернёт None
+
+#.Реализация get()
+voted1 = {}
+def check_voter(name):
+    if voted.get(name):
+        print("kick them out!")
+    else:
+        voted[name] = True
+        print("let them vote!")
+
+check_voter("tom")
+print(voted1)
+check_voter("mike")
+print(voted1)
+check_voter("mike")
+print(voted1)
+
+#.Кэширование
+cache = {}
+def get_page(url):
+    if cache.get(url):
+        return cache[url] # <-- Возвращает кэшированные данные
+    else:
+        data = get_data_fron_server(url)
+        cache[url] = data # <-- Данные сначала сохраняются в кэше
+        return data
