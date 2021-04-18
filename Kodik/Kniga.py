@@ -171,3 +171,26 @@ def get_page(url):
         data = get_data_fron_server(url)
         cache[url] = data # <-- Данные сначала сохраняются в кэше
         return data
+
+#Глава 6
+#Поиск в ширину
+
+def person_is_seller(name):
+    return name[-1] == 'm'
+
+def search(name):
+    search_queue = deque()
+    search_queue += graph[name]
+    searched = []
+    while search_queue:
+        person = search_queue.popleft()
+        if not person in searched:
+            if person_is_seller(person):
+                print(person + " is a mango seller!")
+                return True
+            else:
+                search_queue += graph[person]
+                searched.append(person)
+    return False
+
+search("you")
